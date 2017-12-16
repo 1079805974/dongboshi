@@ -6,7 +6,7 @@
     <div class="footer">
     <my-footer></my-footer>
     </div>
-      <mu-dialog :open="dialog" title="选择您所在的城市" @close="closeDialog">
+      <mu-dialog :open="dialog" title="选择其他城市" @close="closeDialog">
     <mu-picker :slots="addressSlots" :visible-item-count="5" @change="addressChange" :values="address"/>
         <mu-flat-button label="确定" slot="actions" primary @click="pickCity"/>
         <mu-flat-button label="关闭" slot="actions" primary @click="closeDialog"/>
@@ -56,7 +56,7 @@
   export default {
     data(){
       return{
-        dialog:true,
+        dialog:false,
       addressSlots: [
         {
           width: '100%',
@@ -78,15 +78,17 @@
     },
     name: 'app',
     methods:{
+      closeDialog () {
+        this.dialog = false
+      },
       pickCity(){
         bus.city=this.addressCity
+        this.dialog = false
       },
       openDialog () {
         this.dialog = true
       },
-      closeDialog () {
-        this.dialog = false
-      },
+
       addressChange (value, index) {
         switch (index) {
           case 0:
@@ -123,7 +125,19 @@
     height:100%;margin:0;padding:0;
   }
   .footer{
-    position:absolute;bottom:0px;left:0px;width: 100%;
+    position:absolute;bottom:0px;left:0px;width: 100%;z-index: 2;
+  }
+  .green{
+    color: #008a17;
+  }
+  .green i{
+    color: #008a17;
+  }
+  .pink{
+    color: deeppink;
+  }
+  .pink i{
+    color: deeppink;
   }
   .city-picker{
     width:50%;

@@ -6,6 +6,7 @@ import router from './router'
 import MuseUI from 'muse-ui'
 import 'muse-ui/dist/muse-ui.css'
 import 'muse-ui/dist/theme-light.css'
+import '../static/font-awesome/css/font-awesome.css'
 Vue.use(MuseUI)
 
 /* eslint-disable no-new */
